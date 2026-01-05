@@ -56,6 +56,7 @@ export default function Home() {
             <h2 className="text-xl font-bold text-slate-800 dark:text-white">Juan Fernandez</h2>
             <div className="hidden md:flex space-x-8">
               <a href="#about" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Acerca</a>
+              <a href="#contributions" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contribuciones</a>
               <a href="#technologies" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Tecnologías</a>
               <a href="#hardware" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Hardware</a>
               <a href="#projects" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Proyectos</a>
@@ -66,7 +67,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section id="about" className="pt-32 pb-20 px-6">
+      <section id="about" className="pt-32 pb-12 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -131,6 +132,29 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300">24/7</h3>
                 <p className="text-slate-600 dark:text-slate-300">Soporte Disponible</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GitHub Contributions Section */}
+      <section id="contributions" className="py-12 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">
+              Contribuciones
+            </h2>
+          </div>
+          
+          {/* Contribution Graph */}
+          <div className="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-600 max-w-2xl mx-auto">
+            <div className="flex justify-center">
+              <img 
+                src="https://ghchart.rshah.org/00cc00/Z1Code" 
+                alt="GitHub Contribution Chart"
+                className="max-w-full h-auto rounded-lg filter dark:brightness-90"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
