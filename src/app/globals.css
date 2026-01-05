@@ -72,3 +72,17 @@ body {
 .animation-delay-6000 {
   animation-delay: 6s;
 }
+
+/* GitHub Contributions Chart Pulse Animation */
+@keyframes contribution-pulse {
+  0%, 100% {
+    filter: contrast(1.1) saturate(1.2) brightness(1);
+  }
+  50% {
+    filter: contrast(1.2) saturate(1.4) brightness(1.1);
+  }
+}
+
+.contribution-chart {
+  animation: contribution-pulse 3s ease-in-out infinite;
+}

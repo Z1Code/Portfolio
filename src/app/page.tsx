@@ -147,13 +147,16 @@ export default function Home() {
           </div>
           
           {/* Contribution Graph */}
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-600 max-w-2xl mx-auto">
-            <div className="flex justify-center">
+          <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-600 max-w-2xl mx-auto group">
+            <div className="flex justify-center overflow-hidden">
               <img 
                 src="https://ghchart.rshah.org/00cc00/Z1Code" 
                 alt="GitHub Contribution Chart"
-                className="max-w-full h-auto rounded-lg filter dark:brightness-90"
+                className="max-w-full h-auto rounded-lg contribution-chart transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
+                style={{
+                  imageRendering: 'pixelated'
+                }}
               />
             </div>
           </div>
