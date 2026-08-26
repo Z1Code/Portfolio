@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Zap } from "lucide-react";
 import { useTranslation } from "../i18n/LanguageContext";
 
 const WORKLOAD = 70;
+const RATES = 100;
+const AVAILABILITY = 30;
 
 export default function AvailabilityBanner() {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ export default function AvailabilityBanner() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="availability-glow glass-card mx-auto mb-10 w-full max-w-sm rounded-2xl border-t border-amber-500/40"
+      className="availability-glow glass-card mx-auto w-full max-w-2xl rounded-2xl border-t border-amber-500/40"
     >
       {/* Amber accent line at top */}
       <div className="h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
@@ -32,8 +33,8 @@ export default function AvailabilityBanner() {
         </div>
 
         {/* Workload bar */}
-        <div className="mb-4">
-          <div className="mb-2 flex items-center justify-between">
+        <div className="mb-3">
+          <div className="mb-1.5 flex items-center justify-between">
             <span className="font-[var(--font-inter)] text-xs text-white/50">
               {t.availability.workload}
             </span>
@@ -51,12 +52,46 @@ export default function AvailabilityBanner() {
           </div>
         </div>
 
-        {/* Info text */}
-        <p className="flex items-center gap-1.5 font-[var(--font-inter)] text-xs text-white/40">
-          <Zap className="h-3 w-3 text-amber-400/80" />
-          {t.availability.limitedAvailability} &middot;{" "}
-          {t.availability.premiumRates}
-        </p>
+        {/* Rates bar */}
+        <div className="mb-3">
+          <div className="mb-1.5 flex items-center justify-between">
+            <span className="font-[var(--font-inter)] text-xs text-white/50">
+              {t.availability.rates}
+            </span>
+            <span className="font-[var(--font-inter)] text-xs font-semibold text-purple-400">
+              {t.availability.ratesFull}
+            </span>
+          </div>
+          <div className="h-2 overflow-hidden rounded-full bg-white/[0.06] ring-1 ring-white/[0.04]">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${RATES}%` }}
+              transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+              className="bar-shimmer relative h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+            />
+          </div>
+        </div>
+
+        {/* Availability bar */}
+        <div>
+          <div className="mb-1.5 flex items-center justify-between">
+            <span className="font-[var(--font-inter)] text-xs text-white/50">
+              {t.availability.availabilityBar}
+            </span>
+            <span className="font-[var(--font-inter)] text-xs font-semibold text-emerald-400">
+              {AVAILABILITY}% · {t.availability.availabilityLow}
+            </span>
+          </div>
+          <div className="h-2 overflow-hidden rounded-full bg-white/[0.06] ring-1 ring-white/[0.04]">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${AVAILABILITY}%` }}
+              transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
+              className="bar-shimmer relative h-full rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500"
+            />
+          </div>
+        </div>
+
       </div>
     </motion.div>
   );

@@ -23,6 +23,10 @@ export interface Translations {
     moderate: string;
     busy: string;
     workload: string;
+    rates: string;
+    ratesFull: string;
+    availabilityBar: string;
+    availabilityLow: string;
     limitedAvailability: string;
     premiumRates: string;
     responseTime: string;
@@ -48,8 +52,21 @@ export interface Translations {
     velocity: ProjectTranslation;
     prolevelcode: ProjectTranslation;
     ivania: ProjectTranslation;
+    gcpOauth: ProjectTranslation;
     viewSite: string;
     code: string;
+  };
+  bots: {
+    title: string;
+    subtitle: string;
+    hermes: { name: string; description: string };
+    tweetcurator: { name: string; description: string };
+    messenger: { name: string; description: string };
+    statusLabels: { operational: string; development: string };
+    whatsappMessage: string;
+    interested: string;
+    ctaWhatsappMessage: string;
+    cta: { title: string; description: string; button: string };
   };
   contact: {
     title: string;

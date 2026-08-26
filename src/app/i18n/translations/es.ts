@@ -21,6 +21,10 @@ const es: Translations = {
     moderate: "Moderado",
     busy: "OCUPADO",
     workload: "Carga de trabajo",
+    rates: "Tarifas",
+    ratesFull: "Premium",
+    availabilityBar: "Disponibilidad",
+    availabilityLow: "Baja",
     limitedAvailability: "Disponibilidad limitada",
     premiumRates: "tarifas premium",
     responseTime: "Tiempo de respuesta: 48-72h",
@@ -59,8 +63,41 @@ const es: Translations = {
         "Tienda online de fajas colombianas premium con env\u00EDos a todo Chile.",
       tags: ["React", "Next.js", "E-commerce"],
     },
+    gcpOauth: {
+      description:
+        "Automatiza la creaci\u00F3n de clientes OAuth 2.0 en GCP con Playwright — un comando, cero clicks manuales.",
+      tags: ["Playwright", "Node.js", "GCP", "Automatizaci\u00F3n"],
+    },
     viewSite: "Ver Sitio Web",
     code: "C\u00F3digo",
+  },
+  bots: {
+    title: "Bots de Automatizaci\u00F3n",
+    subtitle: "Bots de Telegram y agentes de navegador que automatizan tareas repetitivas para que te enfoques en lo que importa.",
+    hermes: {
+      name: "Hermes Bot",
+      description: "Bot de Telegram que automatiza el scraping de contenido y entrega de medios mejorada con IA usando Playwright y Sharp.",
+    },
+    tweetcurator: {
+      name: "TweetCurator Bot",
+      description: "Curador de tweets con IA que resume tendencias y env\u00EDa res\u00FAmenes diarios directo a Telegram.",
+    },
+    messenger: {
+      name: "Messenger Bot",
+      description: "Extensi\u00F3n de Chrome con IA que responde mensajes autom\u00E1ticamente usando Anthropic AI y Supabase.",
+    },
+    statusLabels: {
+      operational: "Operacional",
+      development: "En Desarrollo",
+    },
+    whatsappMessage: "\u00A1Hola! Me interesa {bot}. \u00BFPuedes contarme m\u00E1s?",
+    interested: "Me interesa",
+    ctaWhatsappMessage: "\u00A1Hola! Me gustar\u00EDa un bot de automatizaci\u00F3n personalizado para mi negocio.",
+    cta: {
+      title: "\u00BFNecesitas un bot personalizado?",
+      description: "Construyo bots de Telegram y automatizaci\u00F3n web adaptados a tu flujo de trabajo. Cont\u00E1ctame.",
+      button: "Contactar por WhatsApp",
+    },
   },
   contact: {
     title: "\u00BFTienes un proyecto en mente?",

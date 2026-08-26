@@ -21,6 +21,10 @@ const pt: Translations = {
     moderate: "Moderado",
     busy: "OCUPADO",
     workload: "Carga de trabalho",
+    rates: "Tarifas",
+    ratesFull: "Premium",
+    availabilityBar: "Disponibilidade",
+    availabilityLow: "Baixa",
     limitedAvailability: "Disponibilidade limitada",
     premiumRates: "tarifas premium",
     responseTime: "Tempo de resposta: 48-72h",
@@ -59,8 +63,41 @@ const pt: Translations = {
         "Loja online de cintas colombianas premium com envios para todo o Chile.",
       tags: ["React", "Next.js", "E-commerce"],
     },
+    gcpOauth: {
+      description:
+        "Automatize a cria\u00E7\u00E3o de clientes OAuth 2.0 no GCP com Playwright — um comando, zero cliques manuais.",
+      tags: ["Playwright", "Node.js", "GCP", "Automa\u00E7\u00E3o"],
+    },
     viewSite: "Ver Site",
     code: "C\u00F3digo",
+  },
+  bots: {
+    title: "Bots de Automa\u00E7\u00E3o",
+    subtitle: "Bots do Telegram e agentes de navega\u00E7\u00E3o que automatizam tarefas repetitivas para que voc\u00EA se concentre no que importa.",
+    hermes: {
+      name: "Hermes Bot",
+      description: "Bot do Telegram que automatiza raspagem de conte\u00FAdo e entrega de m\u00EDdia aprimorada por IA usando Playwright e Sharp.",
+    },
+    tweetcurator: {
+      name: "TweetCurator Bot",
+      description: "Curador de tweets com IA que resume tend\u00EAncias e envia resumos di\u00E1rios diretamente para o Telegram.",
+    },
+    messenger: {
+      name: "Messenger Bot",
+      description: "Extens\u00E3o Chrome com IA que responde mensagens automaticamente usando Anthropic AI e Supabase.",
+    },
+    statusLabels: {
+      operational: "Operacional",
+      development: "Em Desenvolvimento",
+    },
+    whatsappMessage: "Ol\u00E1! Tenho interesse no {bot}. Pode me contar mais?",
+    interested: "Tenho interesse",
+    ctaWhatsappMessage: "Ol\u00E1! Gostaria de um bot de automa\u00E7\u00E3o personalizado para o meu neg\u00F3cio.",
+    cta: {
+      title: "Precisa de um bot personalizado?",
+      description: "Construo bots do Telegram e automa\u00E7\u00E3o web adaptados ao seu fluxo de trabalho. Entre em contato.",
+      button: "Contato via WhatsApp",
+    },
   },
   contact: {
     title: "Tem um projeto em mente?",

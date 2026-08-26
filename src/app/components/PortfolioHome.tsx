@@ -16,6 +16,7 @@ import {
   SiAmd,
   SiIntel,
   SiAsus,
+  SiClaude,
 } from "react-icons/si";
 import PortfolioVideo from "./PortfolioVideo";
 import AvailabilityBanner from "./AvailabilityBanner";
@@ -27,6 +28,9 @@ const ChipScrollIvania = dynamic(() => import("./ChipScrollIvania"), {
   ssr: false,
 });
 const ChipScrollPLC = dynamic(() => import("./ChipScrollPLC"), {
+  ssr: false,
+});
+const TerminalOAuth = dynamic(() => import("./TerminalOAuth"), {
   ssr: false,
 });
 const ContributionGrid = dynamic(() => import("./ContributionGrid"), {
@@ -82,6 +86,7 @@ const technologies = [
   { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
   { name: "Git", icon: SiGit, color: "text-orange-500" },
   { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-400" },
+  { name: "Claude", icon: SiClaude, color: "text-amber-300" },
 ];
 
 const hardware = [
@@ -326,19 +331,9 @@ function HeroSection() {
         ))}
       </div>
 
-      {/* Availability Banner */}
-      <motion.div
-        custom={0}
-        variants={stagger}
-        initial="hidden"
-        animate="show"
-      >
-        <AvailabilityBanner />
-      </motion.div>
-
       {/* Headline */}
       <motion.h1
-        custom={1}
+        custom={0}
         variants={stagger}
         initial="hidden"
         animate="show"
@@ -352,7 +347,7 @@ function HeroSection() {
 
       {/* Subtitle */}
       <motion.p
-        custom={2}
+        custom={1}
         variants={stagger}
         initial="hidden"
         animate="show"
@@ -360,6 +355,17 @@ function HeroSection() {
       >
         {t.hero.subtitle}
       </motion.p>
+
+      {/* Availability Banner */}
+      <motion.div
+        custom={2}
+        variants={stagger}
+        initial="hidden"
+        animate="show"
+        className="mt-7 w-full"
+      >
+        <AvailabilityBanner />
+      </motion.div>
 
       {/* CTA Buttons */}
       <motion.div
@@ -410,7 +416,7 @@ function HeroSection() {
         </span>
         <span className="hidden h-4 w-px bg-white/15 sm:block" />
         <span>
-          <span className="font-semibold text-white/70">7</span>{" "}
+          <span className="font-semibold text-white/70">8</span>{" "}
           {t.hero.projectsCount}
         </span>
       </motion.div>
@@ -684,6 +690,47 @@ function ProjectsSection() {
                 </a>
                 <a
                   href="https://github.com/Z1Code/ivaniabeauty"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  <FaGithub className="h-3.5 w-3.5" /> {t.projects.code}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* gcp-oauth-automator */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <TerminalOAuth />
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500 group-hover:w-full" />
+              <h3
+                className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-emerald-400`}
+              >
+                gcp-oauth-automator
+              </h3>
+              <p
+                className={`${fInter} type-card-body mb-4 text-white/50`}
+              >
+                {t.projects.gcpOauth.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.gcpOauth.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-05-01T00:00:00Z" />
+              <div className="flex gap-4">
+                <a
+                  href="https://github.com/Z1Code/gcp-oauth-automator"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}

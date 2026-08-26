@@ -37,13 +37,19 @@ export default function LanguageSwitcher() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.95 }}
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-            className="glass absolute right-0 top-full z-50 mt-2 min-w-[160px] overflow-hidden rounded-xl p-1.5"
+            className="absolute right-0 top-full z-50 mt-2 min-w-[160px] overflow-hidden rounded-xl border border-white/[0.08] p-1.5"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(18,22,35,0.92), rgba(12,16,28,0.88))",
+              backdropFilter: "blur(26px) saturate(1.7) brightness(1.08)",
+              WebkitBackdropFilter: "blur(26px) saturate(1.7) brightness(1.08)",
+              boxShadow: "0 4px 24px -4px rgba(0,0,0,0.4)",
+            }}
           >
-            <div className="relative z-10">
             {Object.entries(languageNames).map(([code, name]) => (
               <button
                 key={code}
@@ -66,7 +72,6 @@ export default function LanguageSwitcher() {
                 )}
               </button>
             ))}
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
