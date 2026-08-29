@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence, type Variants } from "motion/react";
-import { Menu, X, ArrowRight, Github, Clock, Star, ExternalLink } from "lucide-react";
+import { Menu, X, ArrowRight, Github, Clock } from "lucide-react";
 import { FaWhatsapp, FaGithub } from "react-icons/fa";
 import {
   SiReact,
@@ -16,11 +17,10 @@ import {
   SiAmd,
   SiIntel,
   SiAsus,
+  SiClaude,
 } from "react-icons/si";
-import type { IconBaseProps } from "react-icons";
 import PortfolioVideo from "./PortfolioVideo";
 import AvailabilityBanner from "./AvailabilityBanner";
-import BotsSection from "./BotsSection";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "../i18n/LanguageContext";
 
@@ -31,10 +31,7 @@ const ChipScrollIvania = dynamic(() => import("./ChipScrollIvania"), {
 const ChipScrollPLC = dynamic(() => import("./ChipScrollPLC"), {
   ssr: false,
 });
-const ChipScrollTrumark = dynamic(() => import("./ChipScrollTrumark"), {
-  ssr: false,
-});
-const ChipScrollFashion = dynamic(() => import("./ChipScrollFashion"), {
+const TerminalOAuth = dynamic(() => import("./TerminalOAuth"), {
   ssr: false,
 });
 const ContributionGrid = dynamic(() => import("./ContributionGrid"), {
@@ -81,32 +78,16 @@ function RepoAge({ created }: { created: string }) {
   );
 }
 
-/* ── Claude icon (Anthropic sparkle) ── */
-
-function ClaudeIcon(props: IconBaseProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      width="1em"
-      height="1em"
-      {...props}
-    >
-      <path d="M4.709 15.955l4.72-2.756.08-.08-2.756 4.72L5.2 22.4a.49.49 0 01-.4.2.6.6 0 01-.2-.04.47.47 0 01-.28-.44v-4.8zM8.029 11.595l-6.36 3.72a.49.49 0 01-.24.08.47.47 0 01-.44-.28.6.6 0 01-.04-.2.49.49 0 01.2-.4l4.56-1.56 4.72-2.76zM12.789 9.555l-2.4-2.4-4.72 2.76-2.76 4.72 2.4 2.4 2.76-4.72zM13.349 8.995l4.72-2.76L22.629 4.675a.49.49 0 01.4-.2.6.6 0 01.2.04.47.47 0 01.28.44v4.8l-1.44 4.56-4.72 2.76z M14.749 10.395l2.76-4.72 1.44-4.56a.49.49 0 01.4-.2.6.6 0 01.2.04.47.47 0 01.28.44v4.8l-4.72 2.76zM13.349 10.995l2.4 2.4 4.72-2.76 2.76-4.72-2.4-2.4-2.76 4.72zM11.189 13.155l2.4 2.4 2.76-4.72 4.72-2.76-6.36 3.72-.08.08 2.756-4.72-4.72 2.76z" />
-    </svg>
-  );
-}
-
 /* ── Data ── */
 
 const technologies = [
   { name: "React", icon: SiReact, color: "text-blue-500" },
   { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
   { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
-  { name: "Claude AI", icon: ClaudeIcon, color: "text-amber-400" },
   { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
   { name: "Git", icon: SiGit, color: "text-orange-500" },
   { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-400" },
+  { name: "Claude", icon: SiClaude, color: "text-amber-300" },
 ];
 
 const hardware = [
@@ -220,8 +201,7 @@ function Navbar() {
     { label: t.nav.about, href: "#about" },
     { label: t.nav.technologies, href: "#technologies" },
     { label: t.nav.projects, href: "#projects" },
-    { label: t.nav.bots, href: "#bots" },
-            { label: t.nav.contact, href: "#contact" },
+    { label: t.nav.contact, href: "#contact" },
   ];
 
   return (
@@ -352,19 +332,9 @@ function HeroSection() {
         ))}
       </div>
 
-      {/* Availability Banner */}
-      <motion.div
-        custom={0}
-        variants={stagger}
-        initial="hidden"
-        animate="show"
-      >
-        <AvailabilityBanner />
-      </motion.div>
-
       {/* Headline */}
       <motion.h1
-        custom={1}
+        custom={0}
         variants={stagger}
         initial="hidden"
         animate="show"
@@ -378,7 +348,7 @@ function HeroSection() {
 
       {/* Subtitle */}
       <motion.p
-        custom={2}
+        custom={1}
         variants={stagger}
         initial="hidden"
         animate="show"
@@ -386,6 +356,17 @@ function HeroSection() {
       >
         {t.hero.subtitle}
       </motion.p>
+
+      {/* Availability Banner */}
+      <motion.div
+        custom={2}
+        variants={stagger}
+        initial="hidden"
+        animate="show"
+        className="mt-7 w-full"
+      >
+        <AvailabilityBanner />
+      </motion.div>
 
       {/* CTA Buttons */}
       <motion.div
@@ -436,7 +417,7 @@ function HeroSection() {
         </span>
         <span className="hidden h-4 w-px bg-white/15 sm:block" />
         <span>
-          <span className="font-semibold text-white/70">7</span>{" "}
+          <span className="font-semibold text-white/70">8</span>{" "}
           {t.hero.projectsCount}
         </span>
       </motion.div>
@@ -486,7 +467,7 @@ function TechnologiesSection() {
         </p>
 
         {/* Dev stack */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-6 md:grid-cols-4 lg:grid-cols-7">
+        <div className="grid grid-cols-3 gap-4 sm:gap-6 md:grid-cols-6">
           {technologies.map((tech, i) => {
             const Icon = tech.icon;
             return (
@@ -563,69 +544,6 @@ function TechnologiesSection() {
 function ProjectsSection() {
   const { t } = useTranslation();
 
-  const projects = [
-    {
-      name: "VelocitySetups",
-      translation: t.projects.velocity,
-      chipScroll: <ChipScroll />,
-      gradient: "from-blue-500 to-purple-500",
-      hoverColor: "group-hover:text-blue-400",
-      siteUrl: "https://velocitysetups.com/",
-      githubUrl: "https://github.com/Z1Code/velocity-ecommerce",
-      created: "2025-12-31T15:12:10Z",
-    },
-    {
-      name: "IvaniaBeauty",
-      translation: t.projects.ivania,
-      chipScroll: <ChipScrollIvania />,
-      gradient: "from-pink-500 to-fuchsia-500",
-      hoverColor: "group-hover:text-pink-400",
-      siteUrl: "https://ivaniabeauty.com",
-      githubUrl: "https://github.com/Z1Code/ivaniabeauty",
-      created: "2026-02-04T15:57:53Z",
-    },
-    {
-      name: "TrumarkCertifiedSales",
-      translation: t.projects.trumark,
-      chipScroll: <ChipScrollTrumark />,
-      gradient: "from-amber-500 to-orange-500",
-      hoverColor: "group-hover:text-amber-400",
-      siteUrl: "https://trumarkcertifiedsales.com",
-      githubUrl: null,
-      created: "2026-02-14T00:00:00Z",
-    },
-    {
-      name: "FashionModelAI",
-      translation: t.projects.fashionmodel,
-      chipScroll: <ChipScrollFashion />,
-      gradient: "from-violet-500 to-fuchsia-500",
-      hoverColor: "group-hover:text-violet-400",
-      siteUrl: "https://fashionmodelai.com",
-      githubUrl: null,
-      created: "2026-01-20T00:00:00Z",
-    },
-    {
-      name: "CamisasPiratas",
-      translation: t.projects.camisas,
-      chipScroll: null,
-      gradient: "from-red-500 to-orange-500",
-      hoverColor: "group-hover:text-red-400",
-      siteUrl: "https://camisaspiratas.com",
-      githubUrl: null,
-      created: "2026-02-18T00:00:00Z",
-    },
-    {
-      name: "ProLevelCode",
-      translation: t.projects.prolevelcode,
-      chipScroll: <ChipScrollPLC />,
-      gradient: "from-cyan-500 to-purple-500",
-      hoverColor: "group-hover:text-cyan-400",
-      siteUrl: "https://prolevelcode.com",
-      githubUrl: "https://github.com/Z1Code/prolevelcode",
-      created: "2026-02-08T03:17:07Z",
-    },
-  ];
-
   return (
     <section id="projects" className="px-6 py-12">
       <motion.div {...fadeInView} className="mx-auto max-w-6xl">
@@ -636,156 +554,317 @@ function ProjectsSection() {
         </h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <div
-              key={project.name}
-              className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2"
-            >
-              <div className="relative h-48 overflow-hidden rounded-t-2xl">
-                {project.chipScroll ?? (
-                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-white/[0.03] to-white/[0.08]">
-                    <span className={`${fInter} text-2xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
-                      {project.name}
-                    </span>
-                  </div>
-                )}
-              </div>
-              <div className="p-6">
-                <div className={`absolute top-0 left-0 h-px w-0 bg-gradient-to-r ${project.gradient} transition-all duration-500 group-hover:w-full`} />
-                <h3
-                  className={`${fInter} type-card-title mb-3 text-white transition-colors ${project.hoverColor}`}
-                >
-                  {project.name}
-                </h3>
-                <p
-                  className={`${fInter} type-card-body mb-4 text-white/50`}
-                >
-                  {project.translation.description}
-                </p>
-                <div className="mb-3 flex flex-wrap gap-2">
-                  {project.translation.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <RepoAge created={project.created} />
-                <div className="flex gap-4">
-                  <a
-                    href={project.siteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}
-                  >
-                    {t.projects.viewSite}
-                  </a>
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
-                    >
-                      <FaGithub className="h-3.5 w-3.5" /> {t.projects.code}
-                    </a>
-                  )}
-                </div>
-              </div>
+          {/* VelocitySetups */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <ChipScroll />
             </div>
-          ))}
-        </div>
-      </motion.div>
-    </section>
-  );
-}
-
-/* ── Community ── */
-
-function CommunitySection() {
-  const { t } = useTranslation();
-
-  return (
-    <section id="community" className="px-6 py-12">
-      <motion.div {...fadeInView} className="mx-auto max-w-4xl">
-        <h2
-          className={`${fInter} type-headline mb-4 text-center text-white`}
-        >
-          {t.community.title}
-        </h2>
-        <p
-          className={`${fInter} type-body mx-auto mb-8 max-w-md text-center text-white/50`}
-        >
-          {t.community.subtitle}
-        </p>
-
-        <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
-          {/* Glass refraction preview */}
-          <div className="relative h-48 overflow-hidden rounded-t-2xl bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10">
-            {/* Simulated glass refraction blobs */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative h-32 w-64">
-                <div className="absolute left-4 top-2 h-20 w-20 rounded-full bg-blue-500/20 blur-xl animate-blob" />
-                <div className="absolute right-8 top-4 h-16 w-16 rounded-full bg-purple-500/25 blur-xl animate-blob animation-delay-2000" />
-                <div className="absolute bottom-2 left-1/2 h-14 w-14 -translate-x-1/2 rounded-full bg-pink-500/20 blur-xl animate-blob animation-delay-4000" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="glass rounded-2xl px-6 py-4">
-                    <span className={`${fInter} text-sm font-semibold text-white/90`}>
-                      Glass Refraction
-                    </span>
-                  </div>
-                </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
+              <h3
+                className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-blue-400`}
+              >
+                VelocitySetups
+              </h3>
+              <p
+                className={`${fInter} type-card-body mb-4 text-white/50`}
+              >
+                {t.projects.velocity.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.velocity.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2025-12-31T15:12:10Z" />
+              <div className="flex gap-4">
+                <a
+                  href="https://velocitysetups.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  {t.projects.viewSite}
+                </a>
+                <a
+                  href="https://github.com/Z1Code/velocity-ecommerce"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  <FaGithub className="h-3.5 w-3.5" /> {t.projects.code}
+                </a>
               </div>
             </div>
           </div>
 
-          <div className="p-6">
-            <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-500 group-hover:w-full" />
-            <div className="mb-3 flex items-center gap-3">
+          {/* ProLevelCode */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <ChipScrollPLC />
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-cyan-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
               <h3
-                className={`${fInter} type-card-title text-white transition-colors group-hover:text-purple-400`}
+                className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-cyan-400`}
               >
-                glass-refraction
+                ProLevelCode
               </h3>
-              <span className="glass-pill inline-flex items-center gap-1 rounded-full px-2.5 py-0.5">
-                <Star className="h-3 w-3 text-amber-400" />
-                <span className={`${fInter} type-label text-amber-400/80`}>
-                  Open Source
-                </span>
-              </span>
-            </div>
-            <p className={`${fInter} type-card-body mb-4 text-white/50`}>
-              {t.community.glassRefraction.description}
-            </p>
-            <div className="mb-3 flex flex-wrap gap-2">
-              {t.community.glassRefraction.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
+              <p
+                className={`${fInter} type-card-body mb-4 text-white/50`}
+              >
+                {t.projects.prolevelcode.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.prolevelcode.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-02-08T03:17:07Z" />
+              <div className="flex gap-4">
+                <a
+                  href="https://prolevelcode.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}
                 >
-                  {tag}
-                </span>
-              ))}
+                  {t.projects.viewSite}
+                </a>
+                <a
+                  href="https://github.com/Z1Code/prolevelcode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  <FaGithub className="h-3.5 w-3.5" /> {t.projects.code}
+                </a>
+              </div>
             </div>
-            <div className="flex gap-4">
-              <a
-                href="https://github.com/Z1Code/glass-refraction"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
+          </div>
+
+          {/* IvaniaBeauty */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <ChipScrollIvania />
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-pink-500 to-fuchsia-500 transition-all duration-500 group-hover:w-full" />
+              <h3
+                className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-pink-400`}
               >
-                <FaGithub className="h-3.5 w-3.5" /> {t.community.viewRepo}
-              </a>
-              <a
-                href="https://github.com/Z1Code/glass-refraction"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
+                IvaniaBeauty
+              </h3>
+              <p
+                className={`${fInter} type-card-body mb-4 text-white/50`}
               >
-                <ExternalLink className="h-3.5 w-3.5" /> Demo
-              </a>
+                {t.projects.ivania.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.ivania.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-02-04T15:57:53Z" />
+              <div className="flex gap-4">
+                <a
+                  href="https://ivaniabeauty.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  {t.projects.viewSite}
+                </a>
+                <a
+                  href="https://github.com/Z1Code/ivaniabeauty"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  <FaGithub className="h-3.5 w-3.5" /> {t.projects.code}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* gcp-oauth-automator */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <TerminalOAuth />
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500 group-hover:w-full" />
+              <h3
+                className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-emerald-400`}
+              >
+                gcp-oauth-automator
+              </h3>
+              <p
+                className={`${fInter} type-card-body mb-4 text-white/50`}
+              >
+                {t.projects.gcpOauth.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.gcpOauth.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-05-01T00:00:00Z" />
+              <div className="flex gap-4">
+                <a
+                  href="https://github.com/Z1Code/gcp-oauth-automator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  <FaGithub className="h-3.5 w-3.5" /> {t.projects.code}
+                </a>
+              </div>
+            </div>
+          </div>
+          {/* Garru */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <Image
+                src="/garru-hero-bear.png"
+                alt="Garru, oso andino sosteniendo un vaso de cafe"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-amber-300 to-emerald-700 transition-all duration-500 group-hover:w-full" />
+              <h3 className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-amber-300`}>
+                Garru
+              </h3>
+              <p className={`${fInter} type-card-body mb-4 text-white/50`}>
+                {t.projects.garru.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.garru.tags.map((tag) => (
+                  <span key={tag} className="glass-pill type-label rounded-full px-3 py-1 text-white/60">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-08-29T00:00:00Z" />
+              <div className="flex gap-4">
+                <a href="https://7uanf.com/garru" target="_blank" rel="noopener noreferrer" className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}>
+                  {t.projects.viewSite}
+                </a>
+                <a href="https://github.com/Z1Code/garru-web" target="_blank" rel="noopener noreferrer" className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}>
+                  <FaGithub className="h-3.5 w-3.5" /> {t.projects.code}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* SOS Venezuela 2026 */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <div className="flex h-full items-center justify-center bg-gradient-to-br from-yellow-700 via-blue-950 to-red-900">
+                <span className="text-6xl transition-transform duration-500 group-hover:scale-110">🆘</span>
+                <span className="absolute right-6 bottom-4 animate-pulse text-2xl">📍</span>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-yellow-400 via-blue-500 to-red-500 transition-all duration-500 group-hover:w-full" />
+              <h3
+                className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-red-400`}
+              >
+                SOS Venezuela 2026
+              </h3>
+              <p
+                className={`${fInter} type-card-body mb-4 text-white/50`}
+              >
+                {t.projects.sosvenezuela.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.sosvenezuela.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-06-24T00:00:00Z" />
+              <div className="flex gap-4">
+                <a
+                  href="https://sosvenezuela2026.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  {t.projects.viewSite}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* PokeScan */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <div className="flex h-full items-center justify-center bg-gradient-to-br from-red-950 via-slate-900 to-blue-950">
+                <span className="text-6xl transition-transform duration-500 group-hover:scale-110">🎴</span>
+                <span className="absolute right-6 bottom-4 animate-pulse text-2xl">📈</span>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-yellow-400 to-red-500 transition-all duration-500 group-hover:w-full" />
+              <h3
+                className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-yellow-400`}
+              >
+                PokeScan
+              </h3>
+              <p
+                className={`${fInter} type-card-body mb-4 text-white/50`}
+              >
+                {t.projects.pokescan.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.pokescan.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="glass-pill type-label rounded-full px-3 py-1 text-white/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-06-28T00:00:00Z" />
+              <div className="flex gap-4">
+                <a
+                  href="https://7uanf.com/pokemon/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}
+                >
+                  {t.projects.viewSite}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -876,8 +955,6 @@ export default function PortfolioHome() {
         <ContributionsSection />
         <TechnologiesSection />
         <ProjectsSection />
-        <BotsSection />
-        <CommunitySection />
         <ContactSection />
         <Footer />
       </div>

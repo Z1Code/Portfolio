@@ -5,7 +5,6 @@ const pt: Translations = {
     about: "Sobre",
     technologies: "Tecnologias",
     projects: "Projetos",
-    bots: "Bots",
     contact: "Contato",
   },
   hero: {
@@ -22,6 +21,10 @@ const pt: Translations = {
     moderate: "Moderado",
     busy: "OCUPADO",
     workload: "Carga de trabalho",
+    rates: "Tarifas",
+    ratesFull: "Premium",
+    availabilityBar: "Disponibilidade",
+    availabilityLow: "Baixa",
     limitedAvailability: "Disponibilidade limitada",
     premiumRates: "tarifas premium",
     responseTime: "Tempo de resposta: 48-72h",
@@ -60,69 +63,62 @@ const pt: Translations = {
         "Loja online de cintas colombianas premium com envios para todo o Chile.",
       tags: ["React", "Next.js", "E-commerce"],
     },
-    trumark: {
+    gcpOauth: {
       description:
-        "Plataforma de certifica\u00E7\u00E3o e vendas para Trumark, com gest\u00E3o de produtos e contato direto.",
-      tags: ["React", "Next.js", "Plataforma"],
+        "Automatize a cria\u00E7\u00E3o de clientes OAuth 2.0 no GCP com Playwright — um comando, zero cliques manuais.",
+      tags: ["Playwright", "Node.js", "GCP", "Automa\u00E7\u00E3o"],
     },
-    fashionmodel: {
+    garru: {
       description:
-        "Gerador de fotos de moda com intelig\u00EAncia artificial para modelos e marcas.",
-      tags: ["React", "Next.js", "IA"],
+        "Experiencia web e sistema de gestao para uma cafeteria especial inspirada no urso-andino.",
+      tags: ["Next.js", "PostgreSQL", "E-commerce", "Auth.js"],
     },
-    camisas: {
+    pokescan: {
       description:
-        "E-commerce de camisas de futebol retr\u00F4 e alternativas com designs exclusivos.",
-      tags: ["React", "Next.js", "E-commerce"],
+        "Radar de preços de cartas Pokémon TCG: spikes, joias escondidas e arbitragem Chile↔EUA em mais de 14.000 cartas atualizadas diariamente. Acesso privado.",
+      tags: ["Python", "FastAPI", "PostgreSQL", "Data"],
+    },
+    sosvenezuela: {
+      description:
+        "Mapa colaborativo em tempo real para o terremoto M7.5 da Venezuela (24 jun 2026) — o primeiro app web publicado após o sismo. Relatos de danos e colapsos, busca de desaparecidos, abrigos e primeiros socorros.",
+      tags: ["Next.js", "Leaflet", "Mapa ao vivo", "Resposta a crises"],
     },
     viewSite: "Ver Site",
     code: "C\u00F3digo",
   },
-  community: {
-    title: "Contribui\u00E7\u00F5es para a Comunidade",
-    subtitle: "Projetos open source para a comunidade de desenvolvedores",
-    glassRefraction: {
-      description:
-        "Biblioteca para emular o efeito Glass Refraction do iOS 26 com CSS e filtros SVG.",
-      tags: ["CSS", "SVG", "iOS 26", "Open Source"],
+  bots: {
+    title: "Bots de Automa\u00E7\u00E3o",
+    subtitle: "Bots do Telegram e agentes de navega\u00E7\u00E3o que automatizam tarefas repetitivas para que voc\u00EA se concentre no que importa.",
+    hermes: {
+      name: "Hermes Bot",
+      description: "Bot do Telegram que automatiza raspagem de conte\u00FAdo e entrega de m\u00EDdia aprimorada por IA usando Playwright e Sharp.",
     },
-    viewRepo: "Ver Reposit\u00F3rio",
-    stars: "estrelas",
+    tweetcurator: {
+      name: "TweetCurator Bot",
+      description: "Curador de tweets com IA que resume tend\u00EAncias e envia resumos di\u00E1rios diretamente para o Telegram.",
+    },
+    messenger: {
+      name: "Messenger Bot",
+      description: "Extens\u00E3o Chrome com IA que responde mensagens automaticamente usando Anthropic AI e Supabase.",
+    },
+    statusLabels: {
+      operational: "Operacional",
+      development: "Em Desenvolvimento",
+    },
+    whatsappMessage: "Ol\u00E1! Tenho interesse no {bot}. Pode me contar mais?",
+    interested: "Tenho interesse",
+    ctaWhatsappMessage: "Ol\u00E1! Gostaria de um bot de automa\u00E7\u00E3o personalizado para o meu neg\u00F3cio.",
+    cta: {
+      title: "Precisa de um bot personalizado?",
+      description: "Construo bots do Telegram e automa\u00E7\u00E3o web adaptados ao seu fluxo de trabalho. Entre em contato.",
+      button: "Contato via WhatsApp",
+    },
   },
   contact: {
     title: "Tem um projeto em mente?",
     subtitle:
       "Estou dispon\u00EDvel para novos projetos e colabora\u00E7\u00F5es. Vamos conversar!",
   },
-  bots: {
-    "title": "Agentic Bots e Automação",
-    "subtitle": "Bots de Telegram com IA que automatizam fluxos de trabalho reais — desde publicação em marketplaces até curadoria de redes sociais.",
-    "statusLabels": {
-        "operational": "Operacional",
-        "development": "Em Desenvolvimento",
-        "offline": "Offline"
-    },
-    "hermes": {
-        "name": "Agentic Marketplace Publisher",
-        "description": "Automatiza publicações no Facebook Marketplace — monta configurações de PC, aplica marcas d'água em fotos, gera descrições e publica diretamente pelo Telegram."
-    },
-    "tweetcurator": {
-        "name": "TweetCurator Bot",
-        "description": "Converte conteúdo de repos trending do GitHub de curadores em tweets personalizados que combinam com a voz e estilo único do criador. Cura, reescreve com IA e automatiza todo o pipeline de publicação via Telegram."
-    },
-    "messenger": {
-        "name": "Agentic Marketplace Responder",
-        "description": "Chatbot com IA que responde automaticamente a consultas do Facebook Marketplace, negocia preços e gerencia conversas com clientes em tempo real."
-    },
-    "interested": "Interessado?",
-    "whatsappMessage": "Olá, estou interessado no bot {bot}",
-    "ctaWhatsappMessage": "Olá, estou interessado no AI Agentic Bot Marketplace",
-    "cta": {
-        "title": "AI Agentic Bot Marketplace",
-        "description": "Precisa de um bot personalizado para automatizar seu negócio? Vamos construir juntos — da ideia ao deploy.",
-        "button": "Vamos Conversar"
-    }
-},
   footer: {
     copyright: "\u00A9 2026 Juan Fernandez. Todos os direitos reservados.",
   },
