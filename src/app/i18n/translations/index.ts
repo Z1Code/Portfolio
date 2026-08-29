@@ -9,6 +9,7 @@ export interface Translations {
     technologies: string;
     projects: string;
     contact: string;
+    bots: string;
   };
   hero: {
     greeting: string;
@@ -23,10 +24,6 @@ export interface Translations {
     moderate: string;
     busy: string;
     workload: string;
-    rates: string;
-    ratesFull: string;
-    availabilityBar: string;
-    availabilityLow: string;
     limitedAvailability: string;
     premiumRates: string;
     responseTime: string;
@@ -52,25 +49,37 @@ export interface Translations {
     velocity: ProjectTranslation;
     prolevelcode: ProjectTranslation;
     ivania: ProjectTranslation;
-    gcpOauth: ProjectTranslation;
+    trumark: ProjectTranslation;
+    fashionmodel: ProjectTranslation;
+    camisas: ProjectTranslation;
     viewSite: string;
     code: string;
   };
-  bots: {
+  community: {
     title: string;
     subtitle: string;
-    hermes: { name: string; description: string };
-    tweetcurator: { name: string; description: string };
-    messenger: { name: string; description: string };
-    statusLabels: { operational: string; development: string };
-    whatsappMessage: string;
-    interested: string;
-    ctaWhatsappMessage: string;
-    cta: { title: string; description: string; button: string };
+    glassRefraction: {
+      description: string;
+      tags: string[];
+    };
+    viewRepo: string;
+    stars: string;
   };
   contact: {
     title: string;
     subtitle: string;
+  };
+  bots: {
+    title: string;
+    subtitle: string;
+    statusLabels: { operational: string; development: string; offline: string };
+    hermes: { name: string; description: string };
+    tweetcurator: { name: string; description: string };
+    messenger: { name: string; description: string };
+    interested: string;
+    whatsappMessage: string;
+    ctaWhatsappMessage: string;
+    cta: { title: string; description: string; button: string };
   };
   footer: {
     copyright: string;
