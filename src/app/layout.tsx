@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Juan Fernandez | Desarrollador Full Stack",
   description:
     "Portfolio profesional de Juan Fernandez. Desarrollador web especializado en React, Next.js y tecnologías modernas.",
+  icons: {
+    icon: [{ url: "/icon.svg?v=2", type: "image/svg+xml" }],
+    shortcut: "/icon.svg?v=2",
+  },
 };
 
 export default function RootLayout({
