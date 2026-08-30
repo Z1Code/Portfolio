@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const TOTAL_FRAMES = 72;
-const FPS = 12;
+const FPS = 7;
 
 export default function ChipScrollL2J() {
   const containerRef = useRef<HTMLDivElement>(null);
