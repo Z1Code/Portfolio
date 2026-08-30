@@ -830,10 +830,13 @@ function ProjectsSection() {
           {/* PokeScan */}
           <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
             <div className="relative h-48 overflow-hidden rounded-t-2xl">
-              <div className="flex h-full items-center justify-center bg-gradient-to-br from-red-950 via-slate-900 to-blue-950">
-                <span className="text-6xl transition-transform duration-500 group-hover:scale-110">🎴</span>
-                <span className="absolute right-6 bottom-4 animate-pulse text-2xl">📈</span>
-              </div>
+              <Image
+                src="/pokescan-dashboard.png"
+                alt="Dashboard de inteligencia de mercado de PokeScan"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
             <div className="p-6">
               <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-yellow-400 to-red-500 transition-all duration-500 group-hover:w-full" />
@@ -860,7 +863,7 @@ function ProjectsSection() {
               <RepoAge created="2026-06-28T00:00:00Z" />
               <div className="flex gap-4">
                 <a
-                  href="https://7uanf.com/pokemon/"
+                  href="https://7uanf.com/pokemon"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}
