@@ -13,6 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Upload clean release
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 443
+          timeout: 60s
+          command_timeout: 5m
+          source: "Dockerfile,docker-compose.yml,.dockerignore,package.json,package-lock.json,next.config.ts,tsconfig.json,postcss.config.mjs,eslint.config.mjs,public,src"
+          target: /tmp/7uanf-release
+          rm: true
+          overwrite: true
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
         with:
@@ -25,20 +42,11 @@ jobs:
           script: |
             set -Eeuo pipefail
 
-            APP_ROOT=/opt/apps/7uanf
-            RELEASE_ROOT=/opt/apps/7uanf-release
+            RELEASE_ROOT=/tmp/7uanf-release
             COMPOSE_PROJECT=7uanf
             IMAGE_NAME=7uanf-web:latest
             ROLLBACK_IMAGE=7uanf-web:rollback
 
-            cd "$APP_ROOT"
-
-            # Build from a clean detached worktree. The live checkout may contain
-            # operator changes and is never reset or cleaned by CI.
-            git fetch --prune origin main
-            git worktree remove --force "$RELEASE_ROOT" 2>/dev/null || true
-            git worktree prune
-            git worktree add --force --detach "$RELEASE_ROOT" origin/main
             cd "$RELEASE_ROOT"
 
             docker compose -p "$COMPOSE_PROJECT" config --quiet
@@ -78,9 +86,6 @@ jobs:
             echo "App is healthy."
 
             docker image rm "$ROLLBACK_IMAGE" >/dev/null 2>&1 || true
-            cd "$APP_ROOT"
-            git worktree remove --force "$RELEASE_ROOT"
-            git worktree prune
 
             # Keep disk usage bounded without touching active images or volumes.
             docker image prune -f
