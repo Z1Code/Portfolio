@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const TOTAL_FRAMES = 48;
+const TOTAL_FRAMES = 72;
 const FPS = 12;
 
 export default function ChipScrollL2J() {
