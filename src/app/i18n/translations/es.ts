@@ -63,6 +63,11 @@ const es: Translations = {
         "Tienda online de fajas colombianas premium con env\u00EDos a todo Chile.",
       tags: ["React", "Next.js", "E-commerce"],
     },
+    l2j: {
+      description:
+        "Desarrollo servidores para videojuegos online como Lineage II: mundo persistente, login, gameplay, bases de datos, launcher, marketplace e infraestructura de producción.",
+      tags: ["Java", "MMORPG", "MariaDB", "Game Server"],
+    },
     gcpOauth: {
       description:
         "Automatiza la creaci\u00F3n de clientes OAuth 2.0 en GCP con Playwright — un comando, cero clicks manuales.",

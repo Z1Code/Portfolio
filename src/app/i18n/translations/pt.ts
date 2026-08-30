@@ -63,6 +63,11 @@ const pt: Translations = {
         "Loja online de cintas colombianas premium com envios para todo o Chile.",
       tags: ["React", "Next.js", "E-commerce"],
     },
+    l2j: {
+      description:
+        "Desenvolvo servidores para jogos online como Lineage II: mundos persistentes, login, gameplay, bancos de dados, launcher, marketplace e infraestrutura de producao.",
+      tags: ["Java", "MMORPG", "MariaDB", "Game Server"],
+    },
     gcpOauth: {
       description:
         "Automatize a cria\u00E7\u00E3o de clientes OAuth 2.0 no GCP com Playwright — um comando, zero cliques manuais.",

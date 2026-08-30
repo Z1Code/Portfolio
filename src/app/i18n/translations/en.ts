@@ -62,6 +62,11 @@ const en: Translations = {
         "Online store for premium Colombian shapewear with shipping throughout Chile.",
       tags: ["React", "Next.js", "E-commerce"],
     },
+    l2j: {
+      description:
+        "I build online game servers like Lineage II: persistent worlds, login, gameplay, databases, launchers, marketplaces, and production infrastructure.",
+      tags: ["Java", "MMORPG", "MariaDB", "Game Server"],
+    },
     gcpOauth: {
       description:
         "Automate Google OAuth 2.0 client creation in GCP using Playwright — one command, zero manual clicks.",

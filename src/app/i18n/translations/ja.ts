@@ -63,6 +63,11 @@ const ja: Translations = {
         "\u30C1\u30EA\u5168\u571F\u3078\u914D\u9001\u53EF\u80FD\u306A\u30B3\u30ED\u30F3\u30D3\u30A2\u88FD\u30D7\u30EC\u30DF\u30A2\u30E0\u30B7\u30A7\u30A4\u30D7\u30A6\u30A7\u30A2\u306E\u30AA\u30F3\u30E9\u30A4\u30F3\u30B9\u30C8\u30A2\u3002",
       tags: ["React", "Next.js", "E\u30B3\u30DE\u30FC\u30B9"],
     },
+    l2j: {
+      description:
+        "Lineage IIのようなオンラインゲームサーバーを開発。永続ワールド、ログイン、ゲームプレイ、DB、ランチャー、マーケット、運用基盤まで対応。",
+      tags: ["Java", "MMORPG", "MariaDB", "Game Server"],
+    },
     gcpOauth: {
       description:
         "Playwright\u3092\u4F7F\u3063\u305FGoogle OAuth 2.0\u30AF\u30E9\u30A4\u30A2\u30F3\u30C8\u4F5C\u6210\u306E\u81EA\u52D5\u5316\u2014\u30B3\u30DE\u30F3\u30C9\u4E00\u3064\u3067\u5B8C\u4E86\u3002",

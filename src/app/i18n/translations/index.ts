@@ -52,6 +52,7 @@ export interface Translations {
     velocity: ProjectTranslation;
     prolevelcode: ProjectTranslation;
     ivania: ProjectTranslation;
+    l2j: ProjectTranslation;
     gcpOauth: ProjectTranslation;
     garru: ProjectTranslation;
     pokescan: ProjectTranslation;

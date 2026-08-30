@@ -31,6 +31,9 @@ const ChipScrollIvania = dynamic(() => import("./ChipScrollIvania"), {
 const ChipScrollPLC = dynamic(() => import("./ChipScrollPLC"), {
   ssr: false,
 });
+const ChipScrollL2J = dynamic(() => import("./ChipScrollL2J"), {
+  ssr: false,
+});
 const TerminalOAuth = dynamic(() => import("./TerminalOAuth"), {
   ssr: false,
 });
@@ -696,6 +699,35 @@ function ProjectsSection() {
                   className={`${fInter} type-caption inline-flex items-center gap-1.5 font-medium text-white/60 transition-colors hover:text-white`}
                 >
                   <FaGithub className="h-3.5 w-3.5" /> {t.projects.code}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* L2J game server development */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <ChipScrollL2J />
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-amber-300 via-orange-500 to-red-600 transition-all duration-500 group-hover:w-full" />
+              <h3 className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-amber-300`}>
+                L2J · Online Game Servers
+              </h3>
+              <p className={`${fInter} type-card-body mb-4 text-white/50`}>
+                {t.projects.l2j.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.l2j.tags.map((tag) => (
+                  <span key={tag} className="glass-pill type-label rounded-full px-3 py-1 text-white/60">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-03-01T00:00:00Z" />
+              <div className="flex gap-4">
+                <a href="https://adenreborn.com" target="_blank" rel="noopener noreferrer" className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}>
+                  {t.projects.viewSite}
                 </a>
               </div>
             </div>

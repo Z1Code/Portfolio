@@ -60,6 +60,11 @@ const zh: Translations = {
       description: "\u54E5\u4F26\u6BD4\u4E9A\u9AD8\u7AEF\u5851\u8EAB\u8863\u5728\u7EBF\u5546\u5E97\uFF0C\u53D1\u8D27\u81F3\u667A\u5229\u5168\u5883\u3002",
       tags: ["React", "Next.js", "\u7535\u5B50\u5546\u52A1"],
     },
+    l2j: {
+      description:
+        "开发类似 Lineage II 的在线游戏服务器，涵盖持久世界、登录、玩法、数据库、启动器、交易市场和生产基础设施。",
+      tags: ["Java", "MMORPG", "MariaDB", "Game Server"],
+    },
     gcpOauth: {
       description:
         "\u4F7F\u7528Playwright\u81EA\u52A8\u5316GCP\u4E2D\u7684Google OAuth 2.0\u521B\u5EFA\u2014\u4E00\u4E2A\u547D\u4EE4\uFF0C\u96F6\u624B\u52A8\u64CD\u4F5C\u3002",
