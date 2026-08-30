@@ -11,6 +11,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
@@ -18,26 +19,70 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: 443
+          timeout: 60s
+          command_timeout: 15m
           script: |
-            cd /opt/apps/7uanf
+            set -Eeuo pipefail
 
-            # Pull latest changes
-            git fetch origin main
-            git reset --hard origin/main
+            APP_ROOT=/opt/apps/7uanf
+            RELEASE_ROOT=/opt/apps/7uanf-release
+            COMPOSE_PROJECT=7uanf
+            IMAGE_NAME=7uanf-web:latest
+            ROLLBACK_IMAGE=7uanf-web:rollback
 
-            # Build and restart container
-            docker compose build --no-cache
-            docker compose up -d --force-recreate --remove-orphans
+            cd "$APP_ROOT"
 
-            # Wait for health check
+            # Build from a clean detached worktree. The live checkout may contain
+            # operator changes and is never reset or cleaned by CI.
+            git fetch --prune origin main
+            git worktree remove --force "$RELEASE_ROOT" 2>/dev/null || true
+            git worktree prune
+            git worktree add --force --detach "$RELEASE_ROOT" origin/main
+            cd "$RELEASE_ROOT"
+
+            docker compose -p "$COMPOSE_PROJECT" config --quiet
+
+            # Preserve the currently running image for an automatic rollback.
+            if docker image inspect "$IMAGE_NAME" >/dev/null 2>&1; then
+              docker image tag "$IMAGE_NAME" "$ROLLBACK_IMAGE"
+            fi
+
+            docker compose -p "$COMPOSE_PROJECT" build
+            docker compose -p "$COMPOSE_PROJECT" up -d --force-recreate --remove-orphans
+
             echo "Waiting for health check..."
-            for i in $(seq 1 30); do
-              if curl -sf http://localhost:3002/api/health > /dev/null 2>&1; then
-                echo "App is healthy!"
-                exit 0
+            healthy=false
+            for i in $(seq 1 45); do
+              if curl --fail --silent --show-error http://127.0.0.1:3002/api/health >/dev/null; then
+                healthy=true
+                break
               fi
               sleep 2
             done
-            echo "Health check failed!"
-            docker compose logs --tail=50
-            exit 1
+
+            if [ "$healthy" != true ]; then
+              echo "Health check failed. Rolling back..."
+              docker compose -p "$COMPOSE_PROJECT" logs --tail=80
+
+              if docker image inspect "$ROLLBACK_IMAGE" >/dev/null 2>&1; then
+                docker image tag "$ROLLBACK_IMAGE" "$IMAGE_NAME"
+                docker compose -p "$COMPOSE_PROJECT" up -d --force-recreate --no-build
+                curl --retry 15 --retry-delay 2 --retry-connrefused --fail \
+                  http://127.0.0.1:3002/api/health >/dev/null
+                echo "Rollback completed successfully."
+              fi
+              exit 1
+            fi
+
+            echo "App is healthy."
+
+            docker image rm "$ROLLBACK_IMAGE" >/dev/null 2>&1 || true
+            cd "$APP_ROOT"
+            git worktree remove --force "$RELEASE_ROOT"
+            git worktree prune
+
+            # Keep disk usage bounded without touching active images or volumes.
+            docker image prune -f
+            docker builder prune -f --filter "until=168h"
+            df -h /
