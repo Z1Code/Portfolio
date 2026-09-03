@@ -78,6 +78,11 @@ const pt: Translations = {
         "Experiencia web e sistema de gestao para uma cafeteria especial inspirada no urso-andino.",
       tags: ["Next.js", "PostgreSQL", "E-commerce", "Auth.js"],
     },
+    doblez: {
+      description:
+        "Experiência de marca, loja interativa e painel operacional para uma empanaderia portenha voltada para retirada e delivery.",
+      tags: ["Next.js", "TypeScript", "E-commerce", "UX/UI"],
+    },
     pokescan: {
       description:
         "Radar de preços de cartas Pokémon TCG: spikes, joias escondidas e arbitragem Chile↔EUA em mais de 14.000 cartas atualizadas diariamente. Acesso privado.",

@@ -55,6 +55,7 @@ export interface Translations {
     l2j: ProjectTranslation;
     gcpOauth: ProjectTranslation;
     garru: ProjectTranslation;
+    doblez: ProjectTranslation;
     pokescan: ProjectTranslation;
     sosvenezuela: ProjectTranslation;
     viewSite: string;

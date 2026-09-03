@@ -75,6 +75,11 @@ const zh: Translations = {
         "受安第斯熊启发的精品咖啡店网站体验与管理系统。",
       tags: ["Next.js", "PostgreSQL", "E-commerce", "Auth.js"],
     },
+    doblez: {
+      description:
+        "为布宜诺斯艾利斯馅饼店打造的品牌体验、互动商店与运营面板，专注外带和配送。",
+      tags: ["Next.js", "TypeScript", "E-commerce", "UX/UI"],
+    },
     pokescan: {
       description:
         "宝可梦卡牌价格雷达：每日更新14,000+张卡牌，追踪价格飙升与隐藏宝石。私人访问。",

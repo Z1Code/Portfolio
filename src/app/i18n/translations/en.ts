@@ -77,6 +77,11 @@ const en: Translations = {
         "Web experience and management system for a specialty coffee shop inspired by the Andean bear.",
       tags: ["Next.js", "PostgreSQL", "E-commerce", "Auth.js"],
     },
+    doblez: {
+      description:
+        "Brand experience, interactive storefront, and operations dashboard for a Buenos Aires empanada shop built around takeout and delivery.",
+      tags: ["Next.js", "TypeScript", "E-commerce", "UX/UI"],
+    },
     pokescan: {
       description:
         "Pokémon TCG price radar: spikes, hidden gems and Chile↔US arbitrage across 14,000+ cards updated daily. Private access.",

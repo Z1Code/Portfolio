@@ -78,6 +78,11 @@ const ja: Translations = {
         "アンデスグマに着想を得たスペシャルティコーヒーショップのWeb体験・管理システム。",
       tags: ["Next.js", "PostgreSQL", "E-commerce", "Auth.js"],
     },
+    doblez: {
+      description:
+        "テイクアウトとデリバリーに特化したブエノスアイレスのエンパナーダ店向けブランド体験、インタラクティブ店舗、運営ダッシュボード。",
+      tags: ["Next.js", "TypeScript", "E-commerce", "UX/UI"],
+    },
     pokescan: {
       description:
         "ポケモンカードの価格レーダー。毎日更新される14,000枚以上のカードからスパイクや掘り出し物を検出。プライベートアクセス。",

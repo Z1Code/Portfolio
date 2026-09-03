@@ -812,6 +812,42 @@ function ProjectsSection() {
             </div>
           </div>
 
+          {/* Doblez Empanadas */}
+          <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
+            <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <Image
+                src="/doblez-empanadas.png"
+                alt="Sitio web de Doblez Empanadas de Buenos Aires"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
+            <div className="p-6">
+              <div className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-red-500 to-amber-400 transition-all duration-500 group-hover:w-full" />
+              <h3 className={`${fInter} type-card-title mb-3 text-white transition-colors group-hover:text-amber-300`}>
+                Doblez Empanadas
+              </h3>
+              <p className={`${fInter} type-card-body mb-4 text-white/50`}>
+                {t.projects.doblez.description}
+              </p>
+              <div className="mb-3 flex flex-wrap gap-2">
+                {t.projects.doblez.tags.map((tag) => (
+                  <span key={tag} className="glass-pill type-label rounded-full px-3 py-1 text-white/60">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <RepoAge created="2026-08-29T00:00:00Z" />
+              <div className="flex gap-4">
+                <a href="https://7uanf.com/empanadas" target="_blank" rel="noopener noreferrer" className={`${fInter} type-caption font-medium text-white/60 transition-colors hover:text-white`}>
+                  {t.projects.viewSite}
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* SOS Venezuela 2026 */}
           <div className="glass-card group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2">
             <div className="relative h-48 overflow-hidden rounded-t-2xl">
